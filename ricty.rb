@@ -76,6 +76,10 @@ class Ricty < Formula
       inconsolata = share_fonts+'Inconsolata.otf'
     end
 
+    ['migu-1m-regular.ttf', 'migu-1m-bold.ttf'].each do |f|
+      system './misc/glyph_replacer.pe', share_fonts + f, '0u301c', '0uff5e'
+    end
+
     ricty_args = [inconsolata, share_fonts+'migu-1m-regular.ttf', share_fonts+'migu-1m-bold.ttf']
     ricty_args.unshift('-z') if build.include? 'disable-visible-space'
     ricty_args.unshift('-a') if build.include? 'disable-fullwidth'
